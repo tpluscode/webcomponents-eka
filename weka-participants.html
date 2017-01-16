@@ -1,0 +1,34 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<!--
+`weka-participants`
+
+
+@demo demo/index.html 
+-->
+
+<dom-module id="weka-participants">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    <h2>Hello [[prop1]]</h2>
+  </template>
+
+  <script>
+    Polymer({
+
+      is: 'weka-participants',
+
+      properties: {
+        prop1: {
+          type: String,
+          value: 'weka-participants',
+        },
+      },
+
+    });
+  </script>
+</dom-module>
