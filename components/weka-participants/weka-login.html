@@ -1,0 +1,114 @@
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../social-post-icons/social-post-icons.html">
+<link rel="import" href="../polymerfire/firebase-app.html">
+<link rel="import" href="../polymerfire/firebase-auth.html">
+<link rel="import" href="../polymerfire/firebase-document.html">
+
+<!--
+`weka-login`
+
+
+@demo demo/weka-login.html
+-->
+
+<dom-module id="weka-login">
+    <template>
+        <style>
+            :host {
+                display: block;
+
+            }
+
+            [icon='social-post:facebook'] {
+                --iron-icon-fill-color: var(--color-facebook);
+            }
+
+            [icon='social-post:gplus'] {
+                --iron-icon-fill-color: var(--color-google);
+            }
+
+            [icon='social-post:twitter'] {
+                --iron-icon-fill-color: var(--color-twitter);
+            }
+
+            [icon='social-post:github'] {
+                --iron-icon-fill-color: var(--color-github);
+            }
+
+        </style>
+
+        <firebase-app auth-domain="weka-791be.firebaseapp.com"
+                      api-key="AIzaSyCwHWeHGr9iFwetbn2iiud7vK5e9D9XqFw"
+                      database-url="https://weka-791be.firebaseio.com"></firebase-app>
+
+        <firebase-auth id="auth" user="{{firebaseUser}}" signed-in="{{signedIn}}"></firebase-auth>
+
+        <firebase-document id="currentUser"></firebase-document>
+
+        <template is="dom-if" if="[[!signedIn]]">
+            <paper-icon-button icon="social-post:gplus" on-tap="login" data-provider="google"></paper-icon-button>
+            <paper-icon-button icon="social-post:facebook" on-tap="login" data-provider="facebook"></paper-icon-button>
+            <paper-icon-button icon="social-post:github" on-tap="login" data-provider="github"></paper-icon-button>
+            <paper-icon-button icon="social-post:twitter" on-tap="login" data-provider="twitter"></paper-icon-button>
+        </template>
+
+        <template is="dom-if" if="[[signedIn]]">
+            <paper-icon-button icon="power-settings-new" on-tap="logout"></paper-icon-button>
+        </template>
+    </template>
+
+    <script>
+      Polymer({
+
+        is: 'weka-login',
+
+        properties: {
+          signedIn: {
+            type: Boolean,
+            notify: true
+          },
+          user: {
+            type: Object,
+            notify: true,
+            computed: '_getUser(firebaseUser)'
+          },
+        },
+
+        observers: [
+          '_saveUser(user)'
+        ],
+
+        login: function (e) {
+          this.$.auth.signInWithPopup(e.currentTarget.getAttribute('data-provider'));
+        },
+
+        logout: function () {
+          var self = this;
+          this.user.active = false;
+          this.$.currentUser.setStoredValue('/participants/' + this.user.id, this.user)
+            .then(function () {
+              self.$.auth.signOut();
+            });
+        },
+
+        _saveUser: function (user) {
+          if (user) {
+            this.$.currentUser.setStoredValue('/participants/' + this.user.id, this.user);
+          }
+        },
+
+        _getUser: function (user) {
+          if (user) {
+            return {
+              id: user.uid,
+              photo: user.photoURL,
+              name: user.displayName,
+              active: true,
+              provider: user.providerData[0].providerId
+            };
+          }
+        },
+
+      });
+    </script>
+</dom-module>

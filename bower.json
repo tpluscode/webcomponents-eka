@@ -1,0 +1,7 @@
+{
+  "name": "weka-participants-demo",
+  "private": true,
+  "dependencies": {
+    "weka-participants": "tpluscode/webcomponents-eka"
+  }
+}
