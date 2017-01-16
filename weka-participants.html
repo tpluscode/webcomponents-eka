@@ -1,4 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../image-mask/image-mask.html">
 
 <!--
 `weka-participants`
@@ -8,27 +10,37 @@
 -->
 
 <dom-module id="weka-participants">
-  <template>
-    <style>
-      :host {
-        display: block;
-      }
-    </style>
-    <h2>Hello [[prop1]]</h2>
-  </template>
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
 
-  <script>
-    Polymer({
+            paper-material {
+                display: flex;
+                align-items: center;
+                padding: 3px;
+                justify-content: space-between;
+            }
+        </style>
 
-      is: 'weka-participants',
+        <paper-material elevation="2">
+            <image-mask shape="circle" size="50" src="http://lorempixel.com/400/200/people"></image-mask>
+            <span>
+                Tomasz Pluskiewicz
+            </span>
+        </paper-material>
+    </template>
 
-      properties: {
-        prop1: {
-          type: String,
-          value: 'weka-participants',
+    <script>
+      Polymer({
+
+        is: 'weka-participants',
+
+        properties: {
+
         },
-      },
 
-    });
-  </script>
+      });
+    </script>
 </dom-module>
