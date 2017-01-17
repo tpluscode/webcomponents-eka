@@ -1,9 +1,10 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../polymerfire/firebase-app.html">
+<link rel="import" href="../polymerfire/firebase-query.html">
 
 <link rel="import" href="weka-participant.html">
-<link rel="import" href="weka-login.html">
+<link rel="import" href="../weka-login/weka-login.html">
 
 <!--
 `weka-participants`
@@ -29,6 +30,15 @@
         <template is="dom-if" if="{{signedIn}}">
             <weka-participant participant="{{currentParticipant}}">
                 <paper-icon-button class="icon" icon="power-settings-new" on-tap="logout"></paper-icon-button>
+            </weka-participant>
+        </template>
+
+        <firebase-query path="/participants" data="{{participants}}"
+                        order-by-child="active" equal-to="true"></firebase-query>
+
+        <template is="dom-repeat" items="[[participants]]" as="p">
+            <weka-participant participant="{{p}}">
+                <iron-icon class="icon" icon="social-post:[[p.provider]]"></iron-icon>
             </weka-participant>
         </template>
     </template>
