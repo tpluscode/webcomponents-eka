@@ -4,7 +4,8 @@
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
     "paper-material": "polymerelements/paper-material#^1.0.6",
-    "image-mask": "^1.1.4"
+    "image-mask": "^1.1.4",
+    "paper-icon-button": "polymerelements/paper-icon-button#^1.1.4"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

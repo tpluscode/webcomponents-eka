@@ -1,0 +1,36 @@
+<link rel="import" href="../paper-material/paper-material.html">
+<link rel="import" href="../image-mask/image-mask.html">
+
+<dom-module id="weka-participant">
+    <template>
+        <style>
+            :host {
+                display: block;
+            }
+
+            paper-material {
+                display: flex;
+                align-items: center;
+                padding: 3px;
+                justify-content: space-between;
+            }
+        </style>
+
+        <paper-material elevation="2">
+            <image-mask shape="circle" size="50" src="[[participant.photo]]"></image-mask>
+            <span>
+                [[participant.name]]
+            </span>
+            <content selector=".icon"></content>
+        </paper-material>
+    </template>
+</dom-module>
+
+<script>
+    Polymer({
+      is: 'weka-participant',
+      properties: {
+        participant: Object
+      }
+    });
+</script>

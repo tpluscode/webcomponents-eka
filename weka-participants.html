@@ -1,6 +1,6 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-material/paper-material.html">
-<link rel="import" href="../image-mask/image-mask.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="weka-participant.html">
 
 <!--
 `weka-participants`
@@ -15,21 +15,11 @@
             :host {
                 display: block;
             }
-
-            paper-material {
-                display: flex;
-                align-items: center;
-                padding: 3px;
-                justify-content: space-between;
-            }
         </style>
 
-        <paper-material elevation="2">
-            <image-mask shape="circle" size="50" src="http://lorempixel.com/400/200/people"></image-mask>
-            <span>
-                Tomasz Pluskiewicz
-            </span>
-        </paper-material>
+        <weka-participant participant="{{currentParticipant}}">
+            <paper-icon-button class="icon" icon="power-settings-new"></paper-icon-button>
+        </weka-participant>
     </template>
 
     <script>
@@ -38,7 +28,12 @@
         is: 'weka-participants',
 
         properties: {
-
+            currentParticipant: {
+              value: {
+                "name": "Tomasz Pluskiewicz",
+                "photo": "http://lorempixel.com/400/200/people"
+              }
+            }
         },
 
       });
