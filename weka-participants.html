@@ -18,7 +18,31 @@
         <style>
             :host {
                 display: block;
+
+                --color-facebook: #3b5998;
+                --color-google: #db4437;
+                --color-twitter: #00aced;
+                --color-github: #333;
+
+                --weka-login-color-facebook: var(--color-facebook);
+                --weka-login-color-github: var(--color-github);
+                --weka-login-color-google: var(--color-google);
+                --weka-login-color-twitter: var(--color-twitter);
             }
+
+            [icon='social-post:facebook'] {
+                --iron-icon-fill-color: var(--color-facebook);
+            }
+            [icon='social-post:gplus'] {
+                --iron-icon-fill-color: var(--color-google);
+            }
+            [icon='social-post:github'] {
+                --iron-icon-fill-color: var(--color-github);
+            }
+            [icon='social-post:twitter'] {
+                --iron-icon-fill-color: var(--color-twitter);
+            }
+
         </style>
 
         <firebase-app auth-domain="weka-791be.firebaseapp.com"
@@ -38,7 +62,7 @@
 
         <template is="dom-repeat" items="[[participants]]" as="p">
             <weka-participant participant="{{p}}">
-                <iron-icon class="icon" icon="social-post:[[p.provider]]"></iron-icon>
+                <iron-icon class="icon" icon$="social-post:[[p.provider]]"></iron-icon>
             </weka-participant>
         </template>
     </template>
