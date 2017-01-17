@@ -1,6 +1,9 @@
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../polymerfire/firebase-app.html">
+
 <link rel="import" href="weka-participant.html">
+<link rel="import" href="weka-login.html">
 
 <!--
 `weka-participants`
@@ -16,6 +19,12 @@
                 display: block;
             }
         </style>
+
+        <firebase-app auth-domain="weka-791be.firebaseapp.com"
+                      api-key="AIzaSyCwHWeHGr9iFwetbn2iiud7vK5e9D9XqFw"
+                      database-url="https://weka-791be.firebaseio.com"></firebase-app>
+
+        <weka-login></weka-login>
 
         <weka-participant participant="{{currentParticipant}}">
             <paper-icon-button class="icon" icon="power-settings-new"></paper-icon-button>
