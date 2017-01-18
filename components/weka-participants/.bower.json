@@ -3,12 +3,12 @@
   "main": "weka-participants.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "paper-material": "PolymerElements/paper-material#^1.0.6",
+    "paper-material": "polymerelements/paper-material#^1.0.6",
     "image-mask": "^1.1.4",
+    "paper-icon-button": "polymerelements/paper-icon-button#^1.1.4",
     "polymerfire": "firebase/polymerfire#^0.10.3",
-    "paper-icon-button": "^1.1.4",
     "social-post-icons": "^0.2.0",
-    "paper-styles": "PolymerElements/paper-styles#^1.1.5"
+    "weka-login": "tpluscode/weka-login"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",
@@ -17,11 +17,11 @@
     "webcomponentsjs": "webcomponents/webcomponentsjs#^0.7.0"
   },
   "homepage": "https://github.com/tpluscode/webcomponents-eka",
-  "_release": "4d9c750901",
+  "_release": "f42e7132e0",
   "_resolution": {
     "type": "branch",
     "branch": "master",
-    "commit": "4d9c750901b538c14e14b1fbe2180433fedc4790"
+    "commit": "f42e7132e06ce5d0b4a69e90f7ee4d8e1469c7c8"
   },
   "_source": "git://github.com/tpluscode/webcomponents-eka.git",
   "_target": "*",

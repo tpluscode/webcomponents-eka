@@ -1,14 +1,11 @@
 {
-  "name": "weka-participants",
-  "main": "weka-participants.html",
+  "name": "weka-login",
+  "main": "weka-login.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^1.4.0",
-    "paper-material": "polymerelements/paper-material#^1.0.6",
-    "image-mask": "^1.1.4",
-    "paper-icon-button": "polymerelements/paper-icon-button#^1.1.4",
     "polymerfire": "firebase/polymerfire#^0.10.3",
-    "social-post-icons": "^0.2.0",
-    "weka-login": "tpluscode/weka-login"
+    "paper-icon-button": "polymerelements/paper-icon-button#^1.1.4",
+    "social-post-icons": "^0.2.0"
   },
   "devDependencies": {
     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",

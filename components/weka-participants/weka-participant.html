@@ -1,101 +1,37 @@
 <link rel="import" href="../paper-material/paper-material.html">
 <link rel="import" href="../image-mask/image-mask.html">
 
-<!--
-`weka-participant`
-
-
-@demo demo/weka-participant.html
--->
-
 <dom-module id="weka-participant">
     <template>
         <style>
+            :host {
+                display: block;
+            }
+
             paper-material {
                 display: flex;
                 align-items: center;
                 padding: 3px;
                 justify-content: space-between;
             }
-
-            paper-material image-mask {
-                padding-right: 10px;
-            }
-
-            [icon='social-post:facebook'] {
-                --iron-icon-fill-color: var(--color-facebook);
-            }
-
-            [icon='social-post:gplus'] {
-                --iron-icon-fill-color: var(--color-google);
-            }
-
-            [icon='social-post:twitter'] {
-                --iron-icon-fill-color: var(--color-twitter);
-            }
-
-            [icon='social-post:github'] {
-                --iron-icon-fill-color: var(--color-github);
-            }
         </style>
 
         <paper-material elevation="[[elevation]]">
-            <image-mask shape="circle" size="50" src="[[userPhoto]]"></image-mask>
+            <image-mask shape="circle" size="50" src="[[participant.photo]]"></image-mask>
             <span>
-                [[userName]]
+                [[participant.name]]
             </span>
-            <iron-icon icon$="[[_getProviderIcon(userProvider)]]"></iron-icon>
+            <content selector=".icon"></content>
         </paper-material>
     </template>
-
-    <script>
-      Polymer({
-
-        is: 'weka-participant',
-
-        properties: {
-          userName: {
-            type: String,
-          },
-          userPhoto: {
-            type: String,
-          },
-          userProvider: {
-            observer: '_providerChanged'
-          },
-          flat: Boolean,
-          elevation: {
-            computed: '_getElevation(flat)'
-          }
-        },
-
-        _getElevation: function(flat){
-          return flat ? 0 : 2;
-        },
-
-        _providerChanged: function() {
-            this.updateStyles();
-        },
-
-        _getProviderIcon: function(icon) {
-
-          switch (icon){
-            case 'google.com':
-              icon = 'gplus';
-              break;
-            case 'github.com':
-              icon = 'github';
-              break;
-            case 'facebook.com':
-              icon = 'facebook';
-              break;
-            case 'twitter.com':
-              icon = 'twitter';
-              break;
-          }
-
-          return 'social-post:' + icon;
-        }
-      });
-    </script>
 </dom-module>
+
+<script>
+    Polymer({
+      is: 'weka-participant',
+      properties: {
+        participant: Object,
+        elevation: Number
+      }
+    });
+</script>

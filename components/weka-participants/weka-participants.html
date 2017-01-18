@@ -1,15 +1,16 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../paper-styles/color.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../polymerfire/firebase-app.html">
 <link rel="import" href="../polymerfire/firebase-query.html">
 
-<link rel="import" href="weka-login.html">
 <link rel="import" href="weka-participant.html">
+<link rel="import" href="../weka-login/weka-login.html">
 
 <!--
 `weka-participants`
 
 
-@demo demo/weka-participants.html
+@demo demo/index.html 
 -->
 
 <dom-module id="weka-participants">
@@ -19,27 +20,50 @@
                 display: block;
 
                 --color-facebook: #3b5998;
-                --color-google: var(--google-red-500);
+                --color-google: #db4437;
                 --color-twitter: #00aced;
                 --color-github: #333;
+
+                --weka-login-color-facebook: var(--color-facebook);
+                --weka-login-color-github: var(--color-github);
+                --weka-login-color-google: var(--color-google);
+                --weka-login-color-twitter: var(--color-twitter);
+            }
+
+            [icon='social-post:facebook'] {
+                --iron-icon-fill-color: var(--color-facebook);
+            }
+            [icon='social-post:gplus'] {
+                --iron-icon-fill-color: var(--color-google);
+            }
+            [icon='social-post:github'] {
+                --iron-icon-fill-color: var(--color-github);
+            }
+            [icon='social-post:twitter'] {
+                --iron-icon-fill-color: var(--color-twitter);
             }
 
         </style>
 
-        <weka-login signed-in="{{signedIn}}"
-                    user="{{user}}"></weka-login>
+        <firebase-app auth-domain="weka-791be.firebaseapp.com"
+                      api-key="AIzaSyCwHWeHGr9iFwetbn2iiud7vK5e9D9XqFw"
+                      database-url="https://weka-791be.firebaseio.com"></firebase-app>
 
-        <template is="dom-if" if="[[signedIn]]">
-            <weka-participant user-photo="[[user.photo]]" user-name="[[user.name]]" user-provider="[[user.provider]]"></weka-participant>
+        <weka-login id="login" signed-in="{{signedIn}}" participant="{{currentParticipant}}"></weka-login>
+
+        <template is="dom-if" if="{{signedIn}}">
+            <weka-participant elevation="2" participant="{{currentParticipant}}">
+                <paper-icon-button class="icon" icon="power-settings-new" on-tap="logout"></paper-icon-button>
+            </weka-participant>
         </template>
 
         <firebase-query path="/participants" data="{{participants}}"
                         order-by-child="active" equal-to="true"></firebase-query>
 
-        <div hidden="[[!_hasParticipants(renderedItemCount)]]">Everyone:</div>
-
-        <template is="dom-repeat" items="[[participants]]" as="user" filter="notCurrent" rendered-item-count="{{renderedItemCount}}">
-            <weka-participant user-photo="[[user.photo]]" user-name="[[user.name]]" user-provider="[[user.provider]]" flat></weka-participant>
+        <template is="dom-repeat" items="[[participants]]" as="p">
+            <weka-participant elevation="0" participant="{{p}}">
+                <iron-icon class="icon" icon$="social-post:[[p.provider]]"></iron-icon>
+            </weka-participant>
         </template>
     </template>
 
@@ -48,16 +72,12 @@
 
         is: 'weka-participants',
 
-        _hasParticipants: function(p){
-          return p > 0;
+        properties: {
+            currentParticipant: Object
         },
 
-        notCurrent: function (participant) {
-          if(!this.user) {
-            return true;
-          }
-
-          return participant.id != this.user.id;
+        logout: function() {
+          this.$.login.logout();
         }
 
       });
