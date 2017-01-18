@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<title>Pretty Diff</title>
+	<style>
+	body {
+		text-align: center;
+	}
+	#wrapper {
+		display: inline-block;
+		margin-top: 1em;
+		min-width: 800px;
+		text-align: left;
+	}
+	h2 {
+		background: #fafafa;
+		background: -moz-linear-gradient(#fafafa, #eaeaea);
+		background: -webkit-linear-gradient(#fafafa, #eaeaea);
+		-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#fafafa',endColorstr='#eaeaea')";
+		border: 1px solid #d8d8d8;
+		border-bottom: 0;
+		color: #555;
+		font: 14px sans-serif;
+		overflow: hidden;
+		padding: 10px 6px;
+		text-shadow: 0 1px 0 white;
+		margin: 0;
+	}
+	.file-diff {
+		border: 1px solid #d8d8d8;
+		margin-bottom: 1em;
+		overflow: auto;
+		padding: 0.5em 0;
+	}
+	.file-diff > div {
+		width: 100%:
+	}
+	pre {
+		margin: 0;
+		font-family: "Bitstream Vera Sans Mono", Courier, monospace;
+		font-size: 12px;
+		line-height: 1.4em;
+		text-indent: 0.5em;
+	}
+	.file {
+		color: #aaa;
+	}
+	.delete {
+		background-color: #fdd;
+	}
+	.insert {
+		background-color: #dfd;
+	}
+	.info {
+		color: #a0b;
+	}
+	</style>
+</head>
+<body>
+<div id="wrapper">
+<h2>bower.json</h2><div class='file-diff'><div><pre class='file'>diff --git a/bower.json b/bower.json</pre>
+<pre class='file'>index c6f91f6..f81c6eb 100644</pre>
+<pre class='delete'>--- a/bower.json</pre>
+<pre class='insert'>+++ b/bower.json</pre>
+<pre class='info'>@@ -2,7 +2,11 @@</pre>
+<pre class='context'>   "name": "weka-participants",</pre>
+<pre class='context'>   "main": "weka-participants.html",</pre>
+<pre class='context'>   "dependencies": {</pre>
+<pre class='delete'>-    "polymer": "Polymer/polymer#^1.4.0"</pre>
+<pre class='insert'>+    "polymer": "Polymer/polymer#^1.4.0",</pre>
+<pre class='insert'>+    "paper-material": "polymerelements/paper-material#^1.0.6",</pre>
+<pre class='insert'>+    "image-mask": "^1.1.4",</pre>
+<pre class='insert'>+    "paper-icon-button": "polymerelements/paper-icon-button#^1.1.4",</pre>
+<pre class='insert'>+    "polymerfire": "firebase/polymerfire#^0.10.3"</pre>
+<pre class='context'>   },</pre>
+<pre class='context'>   "devDependencies": {</pre>
+<pre class='context'>     "iron-component-page": "PolymerElements/iron-component-page#^1.0.0",</pre></div></div><h2>demo/index.html</h2><div class='file-diff'><div><pre class='file'>diff --git a/demo/index.html b/demo/index.html</pre>
+<pre class='file'>index 28197f3..9b6415b 100644</pre>
+<pre class='delete'>--- a/demo/index.html</pre>
+<pre class='insert'>+++ b/demo/index.html</pre>
+<pre class='info'>@@ -8,6 +8,12 @@</pre>
+<pre class='context'> </pre>
+<pre class='context'>     &lt;script src="../../webcomponentsjs/webcomponents-lite.js"&gt;&lt;/script&gt;</pre>
+<pre class='context'> </pre>
+<pre class='insert'>+    &lt;script&gt;</pre>
+<pre class='insert'>+      window.Polymer = {</pre>
+<pre class='insert'>+        dom: 'shadow'</pre>
+<pre class='insert'>+      }</pre>
+<pre class='insert'>+    &lt;/script&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='context'>     &lt;link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html"&gt;</pre>
+<pre class='context'>     &lt;link rel="import" href="../../iron-demo-helpers/demo-snippet.html"&gt;</pre>
+<pre class='context'>     &lt;link rel="import" href="../weka-participants.html"&gt;</pre></div></div><h2>weka-login.html</h2><div class='file-diff'><div><pre class='file'>diff --git a/weka-login.html b/weka-login.html</pre>
+<pre class='undefined'>new file mode 100644</pre>
+<pre class='file'>index 0000000..67d20cf</pre>
+<pre class='delete'>--- /dev/null</pre>
+<pre class='insert'>+++ b/weka-login.html</pre>
+<pre class='info'>@@ -0,0 +1,11 @@</pre>
+<pre class='insert'>+&lt;dom-module id="weka-login"&gt;</pre>
+<pre class='insert'>+    &lt;template&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+    &lt;/template&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+    &lt;script&gt;</pre>
+<pre class='insert'>+        Polymer({</pre>
+<pre class='insert'>+          is: 'weka-login'</pre>
+<pre class='insert'>+        });</pre>
+<pre class='insert'>+    &lt;/script&gt;</pre>
+<pre class='insert'>+&lt;/dom-module&gt;</pre>
+<pre class='undefined'>\ No newline at end of file</pre></div></div><h2>weka-participant.html</h2><div class='file-diff'><div><pre class='file'>diff --git a/weka-participant.html b/weka-participant.html</pre>
+<pre class='undefined'>new file mode 100644</pre>
+<pre class='file'>index 0000000..6f2f792</pre>
+<pre class='delete'>--- /dev/null</pre>
+<pre class='insert'>+++ b/weka-participant.html</pre>
+<pre class='info'>@@ -0,0 +1,36 @@</pre>
+<pre class='insert'>+&lt;link rel="import" href="../paper-material/paper-material.html"&gt;</pre>
+<pre class='insert'>+&lt;link rel="import" href="../image-mask/image-mask.html"&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+&lt;dom-module id="weka-participant"&gt;</pre>
+<pre class='insert'>+    &lt;template&gt;</pre>
+<pre class='insert'>+        &lt;style&gt;</pre>
+<pre class='insert'>+            :host {</pre>
+<pre class='insert'>+                display: block;</pre>
+<pre class='insert'>+            }</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+            paper-material {</pre>
+<pre class='insert'>+                display: flex;</pre>
+<pre class='insert'>+                align-items: center;</pre>
+<pre class='insert'>+                padding: 3px;</pre>
+<pre class='insert'>+                justify-content: space-between;</pre>
+<pre class='insert'>+            }</pre>
+<pre class='insert'>+        &lt;/style&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+        &lt;paper-material elevation="2"&gt;</pre>
+<pre class='insert'>+            &lt;image-mask shape="circle" size="50" src="[[participant.photo]]"&gt;&lt;/image-mask&gt;</pre>
+<pre class='insert'>+            &lt;span&gt;</pre>
+<pre class='insert'>+                [[participant.name]]</pre>
+<pre class='insert'>+            &lt;/span&gt;</pre>
+<pre class='insert'>+            &lt;content selector=".icon"&gt;&lt;/content&gt;</pre>
+<pre class='insert'>+        &lt;/paper-material&gt;</pre>
+<pre class='insert'>+    &lt;/template&gt;</pre>
+<pre class='insert'>+&lt;/dom-module&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+&lt;script&gt;</pre>
+<pre class='insert'>+    Polymer({</pre>
+<pre class='insert'>+      is: 'weka-participant',</pre>
+<pre class='insert'>+      properties: {</pre>
+<pre class='insert'>+        participant: Object</pre>
+<pre class='insert'>+      }</pre>
+<pre class='insert'>+    });</pre>
+<pre class='insert'>+&lt;/script&gt;</pre>
+<pre class='undefined'>\ No newline at end of file</pre></div></div><h2>weka-participants.html</h2><div class='file-diff'><div><pre class='file'>diff --git a/weka-participants.html b/weka-participants.html</pre>
+<pre class='file'>index 62d1c8e..251a0a0 100644</pre>
+<pre class='delete'>--- a/weka-participants.html</pre>
+<pre class='insert'>+++ b/weka-participants.html</pre>
+<pre class='info'>@@ -1,4 +1,9 @@</pre>
+<pre class='context'> &lt;link rel="import" href="../polymer/polymer.html"&gt;</pre>
+<pre class='insert'>+&lt;link rel="import" href="../paper-icon-button/paper-icon-button.html"&gt;</pre>
+<pre class='insert'>+&lt;link rel="import" href="../polymerfire/firebase-app.html"&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+&lt;link rel="import" href="weka-participant.html"&gt;</pre>
+<pre class='insert'>+&lt;link rel="import" href="weka-login.html"&gt;</pre>
+<pre class='context'> </pre>
+<pre class='context'> &lt;!--</pre>
+<pre class='context'> `weka-participants`</pre>
+<pre class='info'>@@ -8,27 +13,38 @@</pre>
+<pre class='context'> --&gt;</pre>
+<pre class='context'> </pre>
+<pre class='context'> &lt;dom-module id="weka-participants"&gt;</pre>
+<pre class='delete'>-  &lt;template&gt;</pre>
+<pre class='delete'>-    &lt;style&gt;</pre>
+<pre class='delete'>-      :host {</pre>
+<pre class='delete'>-        display: block;</pre>
+<pre class='delete'>-      }</pre>
+<pre class='delete'>-    &lt;/style&gt;</pre>
+<pre class='delete'>-    &lt;h2&gt;Hello [[prop1]]&lt;/h2&gt;</pre>
+<pre class='delete'>-  &lt;/template&gt;</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-  &lt;script&gt;</pre>
+<pre class='delete'>-    Polymer({</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      is: 'weka-participants',</pre>
+<pre class='delete'>-</pre>
+<pre class='delete'>-      properties: {</pre>
+<pre class='delete'>-        prop1: {</pre>
+<pre class='delete'>-          type: String,</pre>
+<pre class='delete'>-          value: 'weka-participants',</pre>
+<pre class='insert'>+    &lt;template&gt;</pre>
+<pre class='insert'>+        &lt;style&gt;</pre>
+<pre class='insert'>+            :host {</pre>
+<pre class='insert'>+                display: block;</pre>
+<pre class='insert'>+            }</pre>
+<pre class='insert'>+        &lt;/style&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+        &lt;firebase-app auth-domain="weka-791be.firebaseapp.com"</pre>
+<pre class='insert'>+                      api-key="AIzaSyCwHWeHGr9iFwetbn2iiud7vK5e9D9XqFw"</pre>
+<pre class='insert'>+                      database-url="https://weka-791be.firebaseio.com"&gt;&lt;/firebase-app&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+        &lt;weka-login&gt;&lt;/weka-login&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+        &lt;weka-participant participant="{{currentParticipant}}"&gt;</pre>
+<pre class='insert'>+            &lt;paper-icon-button class="icon" icon="power-settings-new"&gt;&lt;/paper-icon-button&gt;</pre>
+<pre class='insert'>+        &lt;/weka-participant&gt;</pre>
+<pre class='insert'>+    &lt;/template&gt;</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+    &lt;script&gt;</pre>
+<pre class='insert'>+      Polymer({</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+        is: 'weka-participants',</pre>
+<pre class='insert'>+</pre>
+<pre class='insert'>+        properties: {</pre>
+<pre class='insert'>+            currentParticipant: {</pre>
+<pre class='insert'>+              value: {</pre>
+<pre class='insert'>+                "name": "Tomasz Pluskiewicz",</pre>
+<pre class='insert'>+                "photo": "http://lorempixel.com/400/200/people"</pre>
+<pre class='insert'>+              }</pre>
+<pre class='insert'>+            }</pre>
+<pre class='context'>         },</pre>
+<pre class='delete'>-      },</pre>
+<pre class='context'> </pre>
+<pre class='delete'>-    });</pre>
+<pre class='delete'>-  &lt;/script&gt;</pre>
+<pre class='insert'>+      });</pre>
+<pre class='insert'>+    &lt;/script&gt;</pre>
+<pre class='context'> &lt;/dom-module&gt;</pre></div></div>
+</div>
+</body>
+</html>
