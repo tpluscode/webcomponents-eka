@@ -52,7 +52,7 @@
         <weka-login id="login" signed-in="{{signedIn}}" participant="{{currentParticipant}}"></weka-login>
 
         <template is="dom-if" if="{{signedIn}}">
-            <weka-participant participant="{{currentParticipant}}">
+            <weka-participant elevation="2" participant="{{currentParticipant}}">
                 <paper-icon-button class="icon" icon="power-settings-new" on-tap="logout"></paper-icon-button>
             </weka-participant>
         </template>
@@ -61,7 +61,7 @@
                         order-by-child="active" equal-to="true"></firebase-query>
 
         <template is="dom-repeat" items="[[participants]]" as="p">
-            <weka-participant participant="{{p}}">
+            <weka-participant elevation="0" participant="{{p}}">
                 <iron-icon class="icon" icon$="social-post:[[p.provider]]"></iron-icon>
             </weka-participant>
         </template>

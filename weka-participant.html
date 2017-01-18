@@ -16,7 +16,7 @@
             }
         </style>
 
-        <paper-material elevation="2">
+        <paper-material elevation="[[elevation]]">
             <image-mask shape="circle" size="50" src="[[participant.photo]]"></image-mask>
             <span>
                 [[participant.name]]
@@ -30,7 +30,8 @@
     Polymer({
       is: 'weka-participant',
       properties: {
-        participant: Object
+        participant: Object,
+        elevation: Number
       }
     });
 </script>
